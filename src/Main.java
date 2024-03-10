@@ -1,13 +1,15 @@
+import java.util.Random;
+
 public class Main {
     public static void main(String[] args) {
         // Task 1
         System.out.println("Task 1");
-        int[] expenses = new int[5];
-        expenses[0] = 100;
-        expenses[1] = 200;
-        expenses[2] = 300;
-        expenses[3] = 400;
-        expenses[4] = 500;
+        int[] expenses;
+        int n = 5; // n - количество элементов массива
+        int a = 100000; // a - начальное значение случайных чисел
+        int b = 200000; // b - конечное значение случайных чисел (не включает)
+        expenses = generateRandomArray(n, a, b);
+        //System.out.println(Arrays.toString(expenses));
         int sum = 0;
         for (int i: expenses) {
             sum += i;
@@ -27,7 +29,7 @@ public class Main {
                 max = i;
             }
         }
-        System.out.println("Минимальная сумма трат за неделю составила " + min + " рублей. Максимальная сумма трат за неделю составила " + max + " рублей");
+        System.out.println("Минимальная сумма трат за месяц составила " + min + " рублей. Максимальная сумма трат за месяц составила " + max + " рублей");
         System.out.println();
 
         // Task 3
@@ -48,5 +50,12 @@ public class Main {
             System.out.print(reverseFullName[i]);
         }
         System.out.println();
+    }
+    private static int[] generateRandomArray(int n, int a, int b) {
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = new Random().nextInt(b - a) + a;
+        }
+        return arr;
     }
 }
